@@ -1,0 +1,114 @@
+.stats-card {
+  grid-column: span 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .stats-card {
+    grid-column: span 4; /* md:col-span-4 */
+  }
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon-wrapper span {
+  font-size: 20px;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(196, 199, 200, 0.6);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.stat-divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Sunrise & Sunset Specifics */
+.sunrise-sunset-card {
+  justify-content: space-between;
+}
+
+.sun-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sun-time {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.sun-path-container {
+  position: relative;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.sun-path-line {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+}
+
+.sun-path-line.bg-line {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sun-path-line.active-line {
+  width: 33.33%;
+  background: var(--text-primary);
+}
+
+.sun-orb {
+  position: absolute;
+  top: 50%;
+  left: 33.33%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
