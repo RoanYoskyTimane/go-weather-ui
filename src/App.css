@@ -1,0 +1,98 @@
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background Atmosphere System */
+.weather-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  transition: background 1s ease;
+}
+
+/* Radial Gradients for Weather Themes */
+.theme-clear {
+  background: radial-gradient(circle at top right, #1e3246 0%, #111316 100%);
+}
+
+.theme-cloudy {
+  background: radial-gradient(circle at top right, #252830 0%, #111316 100%);
+}
+
+.theme-rainy {
+  background: radial-gradient(circle at top right, #182330 0%, #0d0f12 100%);
+}
+
+.theme-snowy {
+  background: radial-gradient(circle at top right, #2d3b4d 0%, #13171f 100%);
+}
+
+.bg-blur-orb-1 {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 60%;
+  height: 60%;
+  border-radius: var(--radius-full);
+  background: rgba(180, 200, 226, 0.1);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.bg-blur-orb-2 {
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  border-radius: var(--radius-full);
+  background: rgba(163, 183, 208, 0.05);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+/* Main Layout Canvas */
+.main-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 88px;
+  padding-bottom: 128px;
+  padding-left: var(--padding-mobile);
+  padding-right: var(--padding-mobile);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding-left: var(--padding-desktop);
+    padding-right: var(--padding-desktop);
+  }
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--stack-gap);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* Selection Glow */
+.selection-glow::selection {
+  background: rgba(180, 200, 226, 0.3);
+}
