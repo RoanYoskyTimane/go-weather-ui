@@ -35,8 +35,8 @@ export const WeatherSearch: React.FC<WeatherSearchProps> = ({
     }
   };
 
-  const getConditionIcon = (condition: string) => {
-    const cond = condition.toLowerCase();
+  const getConditionIcon = (condition?: string) => {
+    const cond = (condition || 'cloudy').toLowerCase();
     if (cond.includes('clear') || cond.includes('sun')) return 'sunny';
     if (cond.includes('rain') || cond.includes('drizzle')) return 'rainy';
     if (cond.includes('snow') || cond.includes('ice') || cond.includes('flurry')) return 'ac_unit';
@@ -103,7 +103,8 @@ export const WeatherSearch: React.FC<WeatherSearchProps> = ({
             {recentCities.map((item, idx) => (
               <div
                 key={`${item.city}-${idx}`}
-                className="recent-city-card glass-panel"
+                className="recent-city-card glass-panel notranslate"
+                translate="no"
                 onClick={() => onSelectRecentCity(item.city)}
               >
                 <div className="recent-city-info">

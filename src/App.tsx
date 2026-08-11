@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { fetchWeather, fetchForecast } from './api/weatherApi';
 import './App.css';
 import { TopAppBar } from './components/TopAppBar';
 import { BottomNav } from './components/BottomNav';
@@ -67,21 +67,10 @@ function App() {
     setIsLoading(true);
     setError(null);
 
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/v1';
-
     try {
-      // 1. Fetch current weather
-      const weatherRes = await axios.get(`${baseUrl}/weather`, {
-        params: { city },
-      });
-
-      // 2. Fetch forecast
-      const forecastRes = await axios.get(`${baseUrl}/forecast`, {
-        params: { city, days },
-      });
-
-      const weather: WeatherInfo = weatherRes.data;
-      const forecast: ForecastInfo = forecastRes.data;
+      // 1. Fetch current weather and forecast via the api service layer
+      const weather = await fetchWeather(city);
+      const forecast = await fetchForecast(city, days);
 
       // Extract high/low from forecast if available
       let highTemp = '27°';

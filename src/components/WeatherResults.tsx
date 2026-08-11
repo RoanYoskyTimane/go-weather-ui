@@ -49,8 +49,8 @@ export const WeatherResults: React.FC<WeatherResultsProps> = ({
   const tempVal = parseFloat(weather.temperature) || 20;
   const condition = weather.condition || (tempVal > 25 ? 'Clear Sky' : tempVal > 15 ? 'Partly Cloudy' : 'Light Rain');
   
-  const getConditionIcon = (condName: string) => {
-    const c = condName.toLowerCase();
+  const getConditionIcon = (condName?: string) => {
+    const c = (condName || '').toLowerCase();
     if (c.includes('clear') || c.includes('sun') || c.includes('hot')) return 'light_mode';
     if (c.includes('rain') || c.includes('drizzle')) return 'rainy';
     if (c.includes('snow') || c.includes('ice') || c.includes('flurry')) return 'ac_unit';
@@ -87,7 +87,7 @@ export const WeatherResults: React.FC<WeatherResultsProps> = ({
         {/* Hero Weather Card */}
         <section className="hero-weather-card glass-card">
           <div className="hero-header">
-            <div className="hero-city-info">
+            <div className="hero-city-info notranslate" translate="no">
               <h1 className="hero-city-name">{weather.city}</h1>
               <p className="hero-country-name">{weather.country}</p>
             </div>
